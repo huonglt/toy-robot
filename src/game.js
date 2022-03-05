@@ -9,7 +9,8 @@ const playGame = () => {
 
   const log = (msg) => console.log(msg);
 
-  const discardCommand = (command) => log(`==>discard command: ${command}`);
+  const discardCommand = (command) =>
+    log(` ==> invalid command. So discard: ${command}`);
 
   /**
    * Prompt user for command to play game
