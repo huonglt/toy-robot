@@ -1,9 +1,10 @@
-/**
- * PLACE command regression expression of format PLACE X,Y,F
- * Where X, Y is number from 0-4, F can be either NORTH, SOUTH, EAST, WEST
- */
-const PLACE_COMMAND_REG_EX =
-  /^(PLACE) ([0-4]),([0-4]),(NORTH|WEST|EAST|SOUTH)$/;
+const {
+  PLACE_COMMAND_REG_EX,
+  MOVE,
+  LEFT,
+  REPORT,
+  RIGHT,
+} = require("./constants.js");
 
 /**
  * Validate command input
@@ -11,10 +12,10 @@ const PLACE_COMMAND_REG_EX =
  */
 const validateCommand = (command) => {
   if (
-    command === "MOVE" ||
-    command === "LEFT" ||
-    command === "RIGHT" ||
-    command === "REPORT"
+    command === MOVE ||
+    command === LEFT ||
+    command === RIGHT ||
+    command === REPORT
   ) {
     return true;
   }
