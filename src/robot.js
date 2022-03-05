@@ -6,11 +6,11 @@ const MIN_Y = 0;
 const MAX_X = 4;
 const MAX_Y = 4;
 
+// facing constants
 const NORTH = "NORTH";
 const SOUTH = "SOUTH";
 const EAST = "EAST";
 const WEST = "WEST";
-
 const F_LIST = [NORTH, SOUTH, EAST, WEST];
 
 const createRobot = () => {
