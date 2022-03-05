@@ -7,6 +7,10 @@ const playGame = () => {
 
   let firstPlaceCommandExecuted = false;
 
+  const log = (msg) => console.log(msg);
+
+  const discardCommand = (command) => log(`==>discard command: ${command}`);
+
   /**
    * Prompt user for command to play game
    * Type exit to quit
@@ -29,11 +33,11 @@ const playGame = () => {
         if (!firstPlaceCommandExecuted) {
           const validPlaceCommand = validatePlaceCommand(command);
           if (validPlaceCommand) {
-            console.log(`==>executing command: ${command}`);
+            log(`==>executing command: ${command}`);
             robot.place(1, 1, "NORTH");
             firstPlaceCommandExecuted = true;
           } else {
-            console.log(`==>discard command ${command}`);
+            discardCommand(command);
           }
         } else {
           // subsequent commands after 1st PLACE command
@@ -41,15 +45,16 @@ const playGame = () => {
           if (validCommand) {
             // robot to execute command
           } else {
-            console.log(`==>discard command ${command}`);
+            discardCommand(command);
           }
         }
+
         recursiveReadCommand();
       });
     };
 
     rl.on("close", () => {
-      console.log("Toy game exit");
+      log("Game exit");
       process.exit(0);
     });
 
