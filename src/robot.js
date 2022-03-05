@@ -54,7 +54,7 @@ const createRobot = () => {
   };
 
   /**
-   * will rotate the robot 90 degrees to the left direction without changing the position of the robot.
+   * rotate the robot 90 degrees to the left without changing the position of the robot
    */
   const left = () => {
     switch (f) {
@@ -73,7 +73,25 @@ const createRobot = () => {
     }
   };
 
-  const right = () => {};
+  /**
+   * rotate the robot 90 degrees to the right without changing the position of the robot
+   */
+  const right = () => {
+    switch (f) {
+      case NORTH:
+        f = EAST;
+        break;
+      case SOUTH:
+        f = WEST;
+        break;
+      case EAST:
+        f = SOUTH;
+        break;
+      case WEST:
+        f = NORTH;
+        break;
+    }
+  };
 
   /**
    * Handle place command
