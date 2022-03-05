@@ -156,7 +156,6 @@ const createRobot = () => {
         place(toX, toY, toF);
       }
     }
-    report();
   };
 
   /**
