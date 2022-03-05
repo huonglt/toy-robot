@@ -1,4 +1,5 @@
-const readline = require("readline");
+import * as readline from "readline";
+import { validateCommand } from "./util.js";
 
 /**
  * Prompt user for command to play game
@@ -34,34 +35,12 @@ const promptUserForCommand = () => {
 };
 
 /**
- * Validate command enter by user
- * valid command are: MOVE, LEFT, RIGHT, REPORT, PLACE X,Y,F
- */
-const validateCommand = (command) => {
-  if (
-    command === "MOVE" ||
-    command === "LEFT" ||
-    command === "RIGHT" ||
-    command === "REPORT"
-  ) {
-    return true;
-  }
-  /**
-   * validate PLACE command with regression expression
-   * valid format: PLACE X,Y,F
-   */
-  const regEx = /^PLACE [0-4],[0-4],(NORTH|WEST|EAST|SOUTH)$/;
-  if (regEx.test(command)) {
-    return true;
-  }
-  return false;
-};
-
-/**
  * Main function to the game
  */
 const main = () => {
   promptUserForCommand();
+  //const x = validateCommand("MOVE");
+  //console.log(`x = ${x}`);
 };
 
 main();
