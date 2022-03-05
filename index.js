@@ -10,14 +10,17 @@ const promptUserForCommand = () => {
     output: process.stdout,
   });
 
+  /**
+   * Recursively read user command until user type exit
+   */
   const recursiveReadCommand = () => {
     rl.question("Command: ", (command) => {
       if (command == "exit") {
-        return rl.close(); //closing RL and returning from function.
+        return rl.close();
       }
       console.log(`command: ${command}`);
 
-      // Calling this function again to prompt for user input command
+      // call the recursive function to prompt again
       recursiveReadCommand();
     });
   };
