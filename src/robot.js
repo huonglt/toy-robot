@@ -13,6 +13,12 @@ const EAST = "EAST";
 const WEST = "WEST";
 const F_LIST = [NORTH, SOUTH, EAST, WEST];
 
+// command constants
+const LEFT = "LEFT";
+const RIGHT = "RIGHT";
+const MOVE = "MOVE";
+const REPORT = "REPORT";
+
 const createRobot = () => {
   // initial position of robot, not faciing any direction
   let x = 0;
@@ -126,22 +132,22 @@ const createRobot = () => {
    */
   const executeCommand = (command) => {
     switch (command) {
-      case "MOVE": {
+      case MOVE: {
         console.log(`calling move function`);
         move();
         break;
       }
-      case "LEFT": {
+      case LEFT: {
         console.log(`calling left function`);
         left();
         break;
       }
-      case "RIGHT": {
+      case RIGHT: {
         console.log(`calling right function`);
         right();
         break;
       }
-      case "REPORT": {
+      case REPORT: {
         report();
         break;
       }
