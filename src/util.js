@@ -24,7 +24,17 @@ const validatePlaceCommand = (command) => {
   return regEx.test(command);
 };
 
+const parsePlaceCommand = (command) => {
+  const regEx = /^(PLACE) ([0-4]),([0-4]),(NORTH|WEST|EAST|SOUTH)$/;
+  const result = regEx.exec(command);
+  if (result) {
+    return [result[2], result[3], result[4]];
+  }
+  return null;
+};
+
 module.exports = {
   validateCommand,
   validatePlaceCommand,
+  parsePlaceCommand,
 };
