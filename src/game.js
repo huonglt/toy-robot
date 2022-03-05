@@ -1,11 +1,11 @@
 const readline = require("readline");
 const createRobot = require("./robot.js");
-const { validatePlaceCommand } = require("./util.js");
+const { validatePlaceCommand, validateCommand } = require("./util.js");
 
 const playGame = () => {
   const robot = createRobot();
 
-  let firstCommandValid = false;
+  let firstPlaceCommandExecuted = false;
 
   /**
    * Prompt user for command to play game
@@ -26,23 +26,22 @@ const playGame = () => {
          * the first command to the robot is a PLACE  command,
          * discard all commands in the sequence until a valid PLACE command has been executed.
          */
-        const validPlaceCommand = validatePlaceCommand(command);
-
-        if (!firstCommandValid) {
+        if (!firstPlaceCommandExecuted) {
           const validPlaceCommand = validatePlaceCommand(command);
           if (validPlaceCommand) {
-            firstCommandValid = true;
             console.log(`==>executing command: ${command}`);
             robot.place(1, 1, "NORTH");
-            console.log(`subsequest command after 1st PLACE valid command`);
+            firstPlaceCommandExecuted = true;
           } else {
             console.log(`==>discard command ${command}`);
           }
         } else {
-          // subsequent command after 1st PLACE command
-          const validCommand = validCommand(command);
+          // subsequent commands after 1st PLACE command
+          const validCommand = validateCommand(command);
           if (validCommand) {
             // robot to execute command
+          } else {
+            console.log(`==>discard command ${command}`);
           }
         }
         recursiveReadCommand();
