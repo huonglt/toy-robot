@@ -23,7 +23,9 @@ describe("validateCommand", () => {
     expect(validateCommand("PLACE")).toBe(false);
   });
 
-  it("un-recognize command", () => {
-    expect(validateCommand("anything")).toBe(false);
+  it("null|undefined|empty command are invalid", () => {
+    expect(validateCommand(null)).toBe(false);
+    expect(validateCommand(undefined)).toBe(false);
+    expect(validateCommand("")).toBe(false);
   });
 });
