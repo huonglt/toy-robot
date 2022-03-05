@@ -1,15 +1,17 @@
-const yargs = require("yargs/yargs");
-const { hideBin } = require("yargs/helpers");
+const readline = require("readline");
 
+/**
+ * Prompt user for command to play game
+ * Type exit to quit
+ */
 const promptUserForCommand = () => {
-  const readline = require("readline");
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
   });
 
-  const recursiveReadCommand = function () {
-    rl.question("Command: ", function (command) {
+  const recursiveReadCommand = () => {
+    rl.question("Command: ", (command) => {
       if (command == "exit") {
         return rl.close(); //closing RL and returning from function.
       }
@@ -20,14 +22,17 @@ const promptUserForCommand = () => {
     });
   };
 
-  rl.on("close", function () {
+  rl.on("close", () => {
     console.log("Toy game exit");
     process.exit(0);
   });
 
   recursiveReadCommand();
 };
-/* validate command */
+
+/**
+ * Validate command enter by user
+ */
 const validateCommand = (command) => {
   if (
     command === "MOVE" ||
@@ -39,6 +44,10 @@ const validateCommand = (command) => {
   }
   // place
 };
+
+/**
+ * Main function to the game
+ */
 const main = () => {
   promptUserForCommand();
 };
