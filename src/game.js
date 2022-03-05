@@ -35,7 +35,7 @@ const playGame = () => {
           const validPlaceCommand = validatePlaceCommand(command);
           if (validPlaceCommand) {
             log(`==>executing command: ${command}`);
-            robot.place(1, 1, "NORTH");
+            robot.executeCommand(command);
             firstPlaceCommandExecuted = true;
           } else {
             discardCommand(command);
@@ -45,6 +45,7 @@ const playGame = () => {
           const validCommand = validateCommand(command);
           if (validCommand) {
             // robot to execute command
+            robot.executeCommand(command);
           } else {
             discardCommand(command);
           }
