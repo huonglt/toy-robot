@@ -1,6 +1,6 @@
 const { parsePlaceCommand } = require("./util.js");
 
-// dimension 5 x 5
+// dimension 5 x 5 with origin 0 x 0
 const MIN_X = 0;
 const MIN_Y = 0;
 const MAX_X = 4;
