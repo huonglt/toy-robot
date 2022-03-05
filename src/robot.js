@@ -1,4 +1,4 @@
-const { parsePlaceCommand } = require("./util.js");
+const { parsePlaceCommand, log } = require("./util.js");
 
 // dimension 5 x 5 with origin 0 x 0
 const MIN_X = 0;
@@ -124,7 +124,7 @@ const createRobot = () => {
    * Log out position and facing direction of the robot
    */
   const report = () => {
-    console.log(`at position: ${x}, ${y}, ${f}`);
+    log(`Robot at position: ${x}, ${y}, ${f}`);
   };
 
   /**
@@ -133,17 +133,14 @@ const createRobot = () => {
   const executeCommand = (command) => {
     switch (command) {
       case MOVE: {
-        console.log(`calling move function`);
         move();
         break;
       }
       case LEFT: {
-        console.log(`calling left function`);
         left();
         break;
       }
       case RIGHT: {
-        console.log(`calling right function`);
         right();
         break;
       }
@@ -161,9 +158,6 @@ const createRobot = () => {
   };
 
   return {
-    move,
-    report,
-    place,
     executeCommand,
   };
 };
