@@ -34,7 +34,6 @@ const playGame = () => {
         if (!firstPlaceCommandExecuted) {
           const validPlaceCommand = validatePlaceCommand(command);
           if (validPlaceCommand) {
-            log(`==>executing command: ${command}`);
             robot.executeCommand(command);
             firstPlaceCommandExecuted = true;
           } else {
