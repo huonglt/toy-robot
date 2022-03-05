@@ -1,5 +1,5 @@
 const { parsePlaceCommand, log } = require("./util.js");
-import {
+const {
   MIN_X,
   MIN_Y,
   MAX_X,
@@ -13,7 +13,7 @@ import {
   RIGHT,
   MOVE,
   REPORT,
-} from "./constants.js";
+} = require("./constants.js");
 
 const createRobot = () => {
   // initial position of robot, not faciing any direction
