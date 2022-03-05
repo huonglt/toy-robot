@@ -53,7 +53,25 @@ const createRobot = () => {
     }
   };
 
-  const left = () => {};
+  /**
+   * will rotate the robot 90 degrees in the specified direction without changing the position of the robot.
+   */
+  const left = () => {
+    switch (f) {
+      case NORTH:
+        f = WEST;
+        break;
+      case SOUTH:
+        f = EAST;
+        break;
+      case EAST:
+        f = NORTH;
+        break;
+      case WEST:
+        f = SOUTH;
+        break;
+    }
+  };
 
   const right = () => {};
 
