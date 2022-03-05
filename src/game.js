@@ -36,8 +36,6 @@ const playGame = () => {
           if (validPlaceCommand) {
             robot.executeCommand(command);
             firstPlaceCommandExecuted = true;
-          } else {
-            discardCommand(command);
           }
         } else {
           // subsequent commands after 1st PLACE command
@@ -45,8 +43,6 @@ const playGame = () => {
           if (validCommand) {
             // robot to execute command
             robot.executeCommand(command);
-          } else {
-            discardCommand(command);
           }
         }
 
