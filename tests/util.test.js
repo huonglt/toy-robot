@@ -1,4 +1,4 @@
-const validateCommand = require("../src/util.js");
+const { validateCommand } = require("../src/util.js");
 const util = require("../src/util.js");
 
 describe("validateCommand", () => {
