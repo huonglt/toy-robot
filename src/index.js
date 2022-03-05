@@ -1,5 +1,5 @@
-import * as readline from "readline";
-import { validateCommand } from "./util.js";
+const readline = require("readline");
+const util = require("./util.js");
 
 /**
  * Prompt user for command to play game
