@@ -16,9 +16,36 @@ const createRobot = () => {
   /**
    * Handle move command
    * Move the toy robot one unit forward in the direction it is currently facing.
+   * Only can move within 5 x 5 dimension. Discard moves that make the robot falling
    */
-
-  const move = () => {};
+  const move = () => {
+    switch (f) {
+      case "NORTH": {
+        if (y - 1 >= MIN_Y) {
+          y = y - 1;
+        }
+        break;
+      }
+      case "SOUTH": {
+        if (y + 1 >= MAX_Y) {
+          y = y + 1;
+        }
+        break;
+      }
+      case "EAST": {
+        if (x + 1 <= MAX_X) {
+          x = x + 1;
+        }
+        break;
+      }
+      case "WEST": {
+        if (x - 1 >= MIN_X) {
+          x = x - 1;
+          break;
+        }
+      }
+    }
+  };
 
   const left = () => {};
 
