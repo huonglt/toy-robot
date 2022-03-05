@@ -164,8 +164,8 @@ const createRobot = () => {
    */
   const getCurrentPostion = () => {
     return {
-      x,
-      y,
+      x: Number(x),
+      y: Number(y),
       f,
     };
   };
