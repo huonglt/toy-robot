@@ -17,9 +17,17 @@ const playGame = () => {
    * Press Ctrl + C to exit
    */
   const promptUserForCommand = () => {
+    /**
+     * set up readline and handle when user press Ctrl + C to exit
+     */
     const rl = readline.createInterface({
       input: process.stdin,
       output: process.stdout,
+    });
+
+    rl.on("close", () => {
+      log("Robot game exit");
+      process.exit(0);
     });
 
     /**
@@ -50,11 +58,6 @@ const playGame = () => {
         recursiveReadCommand();
       });
     };
-
-    rl.on("close", () => {
-      log("Robot game exit");
-      process.exit(0);
-    });
 
     recursiveReadCommand();
   };
