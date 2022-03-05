@@ -22,4 +22,8 @@ describe("validateCommand", () => {
     expect(validateCommand("PLACE 1,1,NORTH-EAST")).toBe(false);
     expect(validateCommand("PLACE")).toBe(false);
   });
+
+  it("un-recognize command", () => {
+    expect(validateCommand("anything")).toBe(false);
+  });
 });
