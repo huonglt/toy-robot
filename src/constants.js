@@ -26,7 +26,7 @@ const PLACE_COMMAND_REG_EX =
 
 module.exports = {
   MIN_X,
-  MAX_Y,
+  MIN_Y,
   MAX_X,
   MAX_Y,
   NORTH,
