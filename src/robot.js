@@ -5,7 +5,13 @@ const MIN_X = 0;
 const MIN_Y = 0;
 const MAX_X = 4;
 const MAX_Y = 4;
-const F_LIST = ["NORTH", "SOUTH", "EAST", "WEST"];
+
+const NORTH = "NORTH";
+const SOUTH = "SOUTH";
+const EAST = "EAST";
+const WEST = "WEST";
+
+const F_LIST = [NORTH, SOUTH, EAST, WEST];
 
 const createRobot = () => {
   // initial position of robot, not faciing any direction
@@ -20,25 +26,25 @@ const createRobot = () => {
    */
   const move = () => {
     switch (f) {
-      case "NORTH": {
+      case NORTH: {
         if (y - 1 >= MIN_Y) {
           y = y - 1;
         }
         break;
       }
-      case "SOUTH": {
+      case SOUTH: {
         if (y + 1 >= MAX_Y) {
           y = y + 1;
         }
         break;
       }
-      case "EAST": {
+      case EAST: {
         if (x + 1 <= MAX_X) {
           x = x + 1;
         }
         break;
       }
-      case "WEST": {
+      case WEST: {
         if (x - 1 >= MIN_X) {
           x = x - 1;
           break;
@@ -64,7 +70,7 @@ const createRobot = () => {
       x = toX;
     }
     if (toY >= MIN_Y && toY <= MAX_Y) {
-      y = y;
+      y = toY;
     }
     if (F_LIST.includes(toF)) {
       f = toF;
