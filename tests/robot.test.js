@@ -1,4 +1,11 @@
-const { MAX_X, MOVE, LEFT, REPORT, NORTH } = require("../src/constants.js");
+const {
+  MAX_X,
+  MOVE,
+  LEFT,
+  REPORT,
+  NORTH,
+  WEST,
+} = require("../src/constants.js");
 const createRobot = require("../src/robot.js");
 
 describe("test robot module", () => {
@@ -12,6 +19,18 @@ describe("test robot module", () => {
     expect(x).toEqual(0);
     expect(y).toEqual(1);
     expect(f).toEqual(NORTH);
+  });
+
+  it("commands in example 2", () => {
+    const robot = createRobot();
+    robot.executeCommand("PLACE 0,0,NORTH");
+    robot.executeCommand(LEFT);
+    robot.executeCommand(REPORT);
+
+    const { x, y, f } = robot.getCurrentPostion();
+    expect(x).toEqual(0);
+    expect(y).toEqual(0);
+    expect(f).toEqual(WEST);
   });
   it("commands in example 3", () => {
     const robot = createRobot();
