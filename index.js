@@ -1,27 +1,32 @@
 const yargs = require("yargs/yargs");
 const { hideBin } = require("yargs/helpers");
 
-const readline = require("readline");
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-
-const recursiveReadLine = function () {
-  rl.question("Command: ", function (answer) {
-    if (answer == "exit")
-      //we need some base case, for recursion
-      return rl.close(); //closing RL and returning from function.
-    console.log('Got it! Your answer was: "', answer, '"');
-    recursiveReadLine(); //Calling this function again to ask new question
+const promptUserForCommand = () => {
+  const readline = require("readline");
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
   });
+
+  const recursiveReadCommand = function () {
+    rl.question("Command: ", function (command) {
+      if (command == "exit") {
+        return rl.close(); //closing RL and returning from function.
+      }
+      console.log(`command: ${command}`);
+
+      // Calling this function again to prompt for user input command
+      recursiveReadCommand();
+    });
+  };
+
+  rl.on("close", function () {
+    console.log("Toy game exit");
+    process.exit(0);
+  });
+
+  recursiveReadCommand();
 };
-
-rl.on("close", function () {
-  console.log("\nBYE BYE !!!");
-  process.exit(0);
-});
-
 /* validate command */
 const validateCommand = (command) => {
   if (
@@ -35,7 +40,7 @@ const validateCommand = (command) => {
   // place
 };
 const main = () => {
-  recursiveReadLine();
+  promptUserForCommand();
 };
 
 main();
