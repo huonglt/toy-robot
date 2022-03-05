@@ -2,7 +2,7 @@
  * Validate command enter by user
  * valid command are: MOVE, LEFT, RIGHT, REPORT, PLACE X,Y,F
  */
-export const validateCommand = (command) => {
+const validateCommand = (command) => {
   if (
     command === "MOVE" ||
     command === "LEFT" ||
@@ -21,3 +21,5 @@ export const validateCommand = (command) => {
   }
   return false;
 };
+
+module.exports = validateCommand;
