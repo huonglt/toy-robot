@@ -19,7 +19,7 @@ const playGame = () => {
     });
 
     rl.on("close", () => {
-      log("Robot game exit");
+      log("Thanks for playing Toy - Robot game!");
       process.exit(0);
     });
 
