@@ -20,7 +20,7 @@ const validatePlaceCommand = (command) => {
    * validate PLACE command with regression expression
    * valid format: PLACE X,Y,F
    */
-  const regEx = /^PLACE [0-4],[0-4],(NORTH|WEST|EAST|SOUTH)$/;
+  const regEx = /^(PLACE) ([0-4]),([0-4]),(NORTH|WEST|EAST|SOUTH)$/;
   return regEx.test(command);
 };
 
