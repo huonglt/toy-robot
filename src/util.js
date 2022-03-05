@@ -33,8 +33,11 @@ const parsePlaceCommand = (command) => {
   return null;
 };
 
+const log = (msg) => console.log(msg);
+
 module.exports = {
   validateCommand,
   validatePlaceCommand,
   parsePlaceCommand,
+  log,
 };

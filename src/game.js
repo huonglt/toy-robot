@@ -1,16 +1,11 @@
 const readline = require("readline");
 const createRobot = require("./robot.js");
-const { validatePlaceCommand, validateCommand } = require("./util.js");
+const { validatePlaceCommand, validateCommand, log } = require("./util.js");
 
 const playGame = () => {
   const robot = createRobot();
 
   let firstPlaceCommandExecuted = false;
-
-  const log = (msg) => console.log(msg);
-
-  const discardCommand = (command) =>
-    log(` ==> invalid command. So discard: ${command}`);
 
   /**
    * Prompt user for command to play game
