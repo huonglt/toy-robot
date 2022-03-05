@@ -14,7 +14,7 @@ const playGame = () => {
 
   /**
    * Prompt user for command to play game
-   * Type exit to quit
+   * Press Ctrl + C to exit
    */
   const promptUserForCommand = () => {
     const rl = readline.createInterface({
@@ -23,25 +23,26 @@ const playGame = () => {
     });
 
     /**
-     * Recursively read user command until user type exit
+     * Recursively read user command until user press Ctrl + C to exit
+     * The first command to the robot to execute must be a valid PLACE command
+     * discard all commands until a valid PLACE command has been executed.
+     * Subsequent commands after 1st PLACE command will be executed if command is valid
      */
     const recursiveReadCommand = () => {
       rl.question("Command: ", (command) => {
-        /**
-         * the first command to the robot is a PLACE  command,
-         * discard all commands in the sequence until a valid PLACE command has been executed.
-         */
         if (!firstPlaceCommandExecuted) {
           const validPlaceCommand = validatePlaceCommand(command);
           if (validPlaceCommand) {
+            // 1st valid PLACE command, so execute it
             robot.executeCommand(command);
             firstPlaceCommandExecuted = true;
           }
         } else {
           // subsequent commands after 1st PLACE command
           const validCommand = validateCommand(command);
+
+          // robot to execute subsequent valid commands
           if (validCommand) {
-            // robot to execute command
             robot.executeCommand(command);
           }
         }
@@ -51,7 +52,7 @@ const playGame = () => {
     };
 
     rl.on("close", () => {
-      log("Game exit");
+      log("Robot game exit");
       process.exit(0);
     });
 
