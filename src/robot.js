@@ -159,8 +159,20 @@ const createRobot = () => {
     report();
   };
 
+  /**
+   * Get current position and facing direction of the robot
+   */
+  const getCurrentPostion = () => {
+    return {
+      x,
+      y,
+      f,
+    };
+  };
+
   return {
     executeCommand,
+    getCurrentPostion,
   };
 };
 
