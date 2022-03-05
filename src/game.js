@@ -5,8 +5,6 @@ const { validatePlaceCommand, validateCommand, log } = require("./util.js");
 const playGame = () => {
   const robot = createRobot();
 
-  let firstPlaceCommandExecuted = false;
-
   /**
    * Prompt user for command to play game
    * Press Ctrl + C to exit
@@ -24,6 +22,8 @@ const playGame = () => {
       log("Robot game exit");
       process.exit(0);
     });
+
+    let firstPlaceCommandExecuted = false;
 
     /**
      * Recursively read user command until user press Ctrl + C to exit
