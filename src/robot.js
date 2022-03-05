@@ -1,11 +1,13 @@
 const { parsePlaceCommand } = require("./util.js");
 
-const createRobot = () => {
-  // dimension 5 x 5
-  const MAX_X = 4;
-  const MAX_Y = 4;
-  const F_LIST = ["NORTH", "SOUTH", "EAST", "WEST"];
+// dimension 5 x 5
+const MIN_X = 0;
+const MIN_Y = 0;
+const MAX_X = 4;
+const MAX_Y = 4;
+const F_LIST = ["NORTH", "SOUTH", "EAST", "WEST"];
 
+const createRobot = () => {
   // initial position of robot, not faciing any direction
   let x = 0;
   let y = 0;
@@ -31,10 +33,10 @@ const createRobot = () => {
    * @param {*} f
    */
   const place = (toX, toY, toF) => {
-    if (toX >= 0 && toX <= MAX_X) {
+    if (toX >= MIN_X && toX <= MAX_X) {
       x = toX;
     }
-    if (toY >= 0 && toY <= MAX_Y) {
+    if (toY >= MIN_Y && toY <= MAX_Y) {
       y = y;
     }
     if (F_LIST.includes(toF)) {
