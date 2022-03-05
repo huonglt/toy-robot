@@ -1,43 +1,45 @@
-const game = () => {
-  // dimension 5 x 5
-  const MAX_X = 4;
-  const MAX_Y = 4;
+const readline = require("readline");
+const createRobot = require("./robot.js");
 
-  // initial position of robot
-  let x = 0;
-  let y = 0;
-  let f = null;
-
-  let isFirstCommandPlace = false;
-
+const playGame = () => {
+  const robot = createRobot();
   /**
-   * Handle move command
-   * Move the toy robot one unit forward in the direction it is currently facing.
+   * Prompt user for command to play game
+   * Type exit to quit
    */
+  const promptUserForCommand = () => {
+    const rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout,
+    });
 
-  const move = () => {};
+    /**
+     * Recursively read user command until user type exit
+     */
+    const recursiveReadCommand = () => {
+      rl.question("Command: ", (command) => {
+        console.log(`command: ${command}`);
+        if (command == "exit") {
+          return rl.close();
+        } else if (command === "REPORT") {
+          robot.report();
+        }
 
-  /**
-   * Handle place command
-   * PLACE will put the toy robot on the table in position X,Y and facing NORTH, SOUTH, EAST or WEST.
-   * The origin (0,0) can be considered to be the SOUTH WEST most corner.
-   * @param {} x
-   * @param {*} y
-   * @param {*} f
-   */
-  const place = (x, y, f) => {};
+        // call the recursive function to prompt again
+        recursiveReadCommand();
+      });
+    };
 
-  /**
-   * Handle report command
-   * Log out position and facing direction of the robot
-   */
-  const report = () => {
-    console.log(`robot position: ${x}, ${y}, ${f}`);
+    rl.on("close", () => {
+      console.log("Toy game exit");
+      process.exit(0);
+    });
+
+    recursiveReadCommand();
   };
 
-  const runGame = () => {
-    
-  }
+  // run the game
+  promptUserForCommand();
 };
 
-module.exports = game;
+module.exports = playGame;
