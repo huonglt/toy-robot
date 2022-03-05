@@ -15,6 +15,10 @@ const createRobot = () => {
 
   const move = () => {};
 
+  const left = () => {};
+
+  const right = () => {};
+
   /**
    * Handle place command
    * PLACE will put the toy robot on the table in position X,Y and facing NORTH, SOUTH, EAST or WEST.
@@ -33,10 +37,43 @@ const createRobot = () => {
     console.log(`at position: ${x}, ${y}, ${f}`);
   };
 
+  /**
+   * Entry point to execute a command
+   */
+  const executeCommand = (command) => {
+    switch (command) {
+      case "MOVE": {
+        console.log(`calling move function`);
+        move();
+        break;
+      }
+      case "LEFT": {
+        console.log(`calling left function`);
+        left();
+        break;
+      }
+      case "RIGHT": {
+        console.log(`calling right function`);
+        right();
+        break;
+      }
+      case "REPORT": {
+        report();
+        break;
+      }
+      default: {
+        // place command
+        console.log(`calling place command`);
+        place(command);
+      }
+    }
+  };
+
   return {
     move,
     report,
     place,
+    executeCommand,
   };
 };
 
