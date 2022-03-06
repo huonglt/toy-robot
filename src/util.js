@@ -45,6 +45,11 @@ const parsePlaceCommand = (command) => {
  */
 const log = (msg) => console.log(msg);
 
+/**
+ * Log error via console.error
+ */
+const logErr = (err) => console.error(err);
+
 module.exports = {
   validateCommand,
   validatePlaceCommand,
