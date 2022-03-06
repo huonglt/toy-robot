@@ -6,22 +6,32 @@ const {
   NORTH,
   WEST,
   SOUTH,
+  EAST,
 } = require("../src/constants.js");
 const createRobot = require("../src/robot.js");
 
 describe("test robot module", () => {
   it("ignore commands until 1st valid PLACE command", () => {
     const robot = createRobot();
+    let x, y, f;
+
     robot.executeCommand("INVALID COMMAND 1");
     robot.executeCommand("");
     robot.executeCommand(MOVE);
     robot.executeCommand(MOVE);
     robot.executeCommand(LEFT);
 
-    const { x, y, f } = robot.getCurrentPostion();
+    ({ x, y, f } = robot.getCurrentPostion());
     expect(x).toEqual(0);
     expect(y).toEqual(0);
     expect(f).toEqual("");
+
+    // 1st valid PLACE command after many ignored / invalid commands will be executed
+    robot.executeCommand("PLACE 2,3,EAST");
+    ({ x, y, f } = robot.getCurrentPostion());
+    expect(x).toEqual(2);
+    expect(y).toEqual(3);
+    expect(f).toEqual(EAST);
   });
 
   it("move that make robot falls will be prevented", () => {
