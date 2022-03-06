@@ -41,7 +41,6 @@ const playGameWithCommandsFromFile = async () => {
       commands.forEach((command) => {
         robot.executeCommand(command);
       });
-      console.log(JSON.stringify(robot.getCurrentPostion()));
     }
   } catch (err) {
     console.error(err);
