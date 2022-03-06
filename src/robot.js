@@ -140,6 +140,7 @@ const createRobot = () => {
    * Entry point to execute a command
    */
   const execute = (command) => {
+    log(`-->Executing command: ${command}`);
     switch (command) {
       case MOVE: {
         move();
