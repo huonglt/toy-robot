@@ -2,6 +2,9 @@ const readline = require("readline");
 const createRobot = require("./robot.js");
 const { log } = require("./util.js");
 
+/**
+ * To play game via console
+ */
 const playConsoleGame = () => {
   const robot = createRobot();
 
