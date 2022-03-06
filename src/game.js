@@ -2,7 +2,7 @@ const readline = require("readline");
 const createRobot = require("./robot.js");
 const { log } = require("./util.js");
 
-const playGame = () => {
+const playConsoleGame = () => {
   const robot = createRobot();
 
   /**
@@ -42,4 +42,4 @@ const playGame = () => {
   promptUserForCommand();
 };
 
-module.exports = playGame;
+module.exports = playConsoleGame;
