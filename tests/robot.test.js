@@ -108,6 +108,7 @@ describe("test robot module", () => {
     expect(y).toEqual(0);
     expect(f).toEqual(WEST);
   });
+
   it("commands in example 3", () => {
     const robot = createRobot();
     robot.executeCommand("PLACE 1,2,EAST");
