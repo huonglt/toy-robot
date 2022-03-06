@@ -3,9 +3,10 @@ const fs = require("fs");
 const readline = require("readline");
 const { once } = require("events");
 const createRobot = require("./robot.js");
+const { logErr } = require("./util.js");
 
 /**
- * Text file containing commands
+ * Data file containing commands
  */
 const commandFile = path.resolve(__dirname, "../data/data.txt");
 
@@ -24,7 +25,7 @@ const readCommandsFromFile = async (commandFile) => {
 
     await once(rl, "close");
   } catch (err) {
-    console.error(err);
+    logErr(err);
   } finally {
     return arr;
   }
@@ -43,7 +44,7 @@ const playGameWithCommandsFromFile = async () => {
       });
     }
   } catch (err) {
-    console.error(err);
+    logErr(err);
   }
 };
 
