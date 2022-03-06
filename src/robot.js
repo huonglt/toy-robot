@@ -1,4 +1,9 @@
-const { parsePlaceCommand, log } = require("./util.js");
+const {
+  parsePlaceCommand,
+  log,
+  validatePlaceCommand,
+  validateCommand,
+} = require("./util.js");
 const {
   MIN_X,
   MIN_Y,
@@ -20,6 +25,8 @@ const createRobot = () => {
   let x = 0;
   let y = 0;
   let f = "";
+
+  let firstPlaceCommandExecuted = false;
 
   /**
    * Handle move command
@@ -132,7 +139,7 @@ const createRobot = () => {
   /**
    * Entry point to execute a command
    */
-  const executeCommand = (command) => {
+  const execute = (command) => {
     switch (command) {
       case MOVE: {
         move();
@@ -152,8 +159,11 @@ const createRobot = () => {
       }
       default: {
         // place command
-        const [toX, toY, toF] = parsePlaceCommand(command);
-        place(toX, toY, toF);
+        const parsedResult = parsePlaceCommand(command);
+        if (parsedResult) {
+          const [toX, toY, toF] = parsedResult;
+          place(toX, toY, toF);
+        }
       }
     }
   };
@@ -169,9 +179,32 @@ const createRobot = () => {
     };
   };
 
+  /**
+   * The first command the robot to execute must be a valid PLACE command
+   * Discard all commands until a valid PLACE command has been executed.
+   * Subsequent commands after 1st PLACE command will be executed if command is valid
+   */
+  const executeCommand = (command) => {
+    if (!firstPlaceCommandExecuted) {
+      const validPlaceCommand = validatePlaceCommand(command);
+      if (validPlaceCommand) {
+        // 1st valid PLACE command, so execute it
+        execute(command);
+        firstPlaceCommandExecuted = true;
+      }
+    } else {
+      const validCommand = validateCommand(command);
+
+      // execute subsequent valid commands after 1st PLACE command
+      if (validCommand) {
+        execute(command);
+      }
+    }
+  };
+
   return {
-    executeCommand,
     getCurrentPostion,
+    executeCommand,
   };
 };
 

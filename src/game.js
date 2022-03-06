@@ -33,22 +33,7 @@ const playGame = () => {
      */
     const recursiveReadCommand = () => {
       rl.question("Command: ", (command) => {
-        if (!firstPlaceCommandExecuted) {
-          const validPlaceCommand = validatePlaceCommand(command);
-          if (validPlaceCommand) {
-            // 1st valid PLACE command, so execute it
-            robot.executeCommand(command);
-            firstPlaceCommandExecuted = true;
-          }
-        } else {
-          // subsequent commands after 1st PLACE command
-          const validCommand = validateCommand(command);
-
-          // robot to execute subsequent valid commands
-          if (validCommand) {
-            robot.executeCommand(command);
-          }
-        }
+        robot.executeCommand(command);
 
         recursiveReadCommand();
       });
