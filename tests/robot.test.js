@@ -5,10 +5,25 @@ const {
   REPORT,
   NORTH,
   WEST,
+  SOUTH,
 } = require("../src/constants.js");
 const createRobot = require("../src/robot.js");
 
 describe("test robot module", () => {
+  it("ignore commands until 1st valid PLACE command", () => {
+    const robot = createRobot();
+    robot.executeCommand("INVALID COMMAND 1");
+    robot.executeCommand("");
+    robot.executeCommand(MOVE);
+    robot.executeCommand(MOVE);
+    robot.executeCommand(LEFT);
+
+    const { x, y, f } = robot.getCurrentPostion();
+    expect(x).toEqual(0);
+    expect(y).toEqual(0);
+    expect(f).toEqual("");
+  });
+
   it("commands in example 1", () => {
     const robot = createRobot();
     robot.executeCommand("PLACE 0,0,NORTH");
