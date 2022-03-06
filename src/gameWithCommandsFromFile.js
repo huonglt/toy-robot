@@ -6,11 +6,6 @@ const createRobot = require("./robot.js");
 const { logErr } = require("./util.js");
 
 /**
- * Data file containing commands
- */
-const commandFile = path.resolve(__dirname, "../data/data.txt");
-
-/**
  * Read commands from data.txt file in the repo
  */
 const readCommandsFromFile = async (commandFile) => {
@@ -34,7 +29,8 @@ const readCommandsFromFile = async (commandFile) => {
 /**
  * Play game with commands from data.txt file in the repo
  */
-const playGameWithCommandsFromFile = async () => {
+const playGameWithCommandsFromFile = () => {
+  const commandFile = path.resolve(__dirname, "../data/data.txt");
   try {
     const commands = await readCommandsFromFile(commandFile);
     if (commands) {
