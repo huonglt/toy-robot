@@ -20,6 +20,10 @@ const {
   REPORT,
 } = require("./constants.js");
 
+/**
+ * Create robot to play game
+ * @returns {Object {getCurrentPostion: Function, executeCommand: Function}} - The robot object
+ */
 const createRobot = () => {
   // initial position of robot, not faciing any direction
   let x = 0;
