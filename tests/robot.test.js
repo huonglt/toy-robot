@@ -44,6 +44,28 @@ describe("test robot module", () => {
     expect(f).toEqual(SOUTH);
   });
 
+  it("Movements causing robot to fall will be prevented, but further valid movements commands still be allowed", () => {
+    const robot = createRobot();
+    let x, y, f;
+
+    // robot at the top NORTH EAST. MOVE commmand will make robot fall, so will be discarded
+    robot.executeCommand("PLACE 4,4,NORTH");
+    robot.executeCommand(MOVE);
+
+    // robot still at position 4 x 4, facing NORTH
+    ({ x, y, f } = robot.getCurrentPostion());
+    expect(x).toEqual(4);
+    expect(y).toEqual(4);
+    expect(f).toEqual(NORTH);
+
+    // LEFT command not causing robot to fall so will be executed
+    robot.executeCommand(LEFT);
+    ({ x, y, f } = robot.getCurrentPostion());
+    expect(x).toEqual(4);
+    expect(y).toEqual(4);
+    expect(f).toEqual(WEST);
+  });
+
   it("commands in example 1", () => {
     const robot = createRobot();
     robot.executeCommand("PLACE 0,0,NORTH");
