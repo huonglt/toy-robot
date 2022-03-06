@@ -9,6 +9,8 @@ const {
 /**
  * Validate command input
  * Valid command are: MOVE, LEFT, RIGHT, REPORT, PLACE X,Y,F
+ * @param {string} command - Command to validate
+ * @returns {boolean} - true when command is valid, false otherwise
  */
 const validateCommand = (command) => {
   if (
@@ -26,11 +28,15 @@ const validateCommand = (command) => {
 /**
  * Validate Place command of format PLACE X,Y,F
  * Where X, Y is number from 0-4, F can be either NORTH, SOUTH, EAST, WEST
+ * @param {string} command - Command to validate
+ * @returns {boolean} - true when command is valid PLACE command, false otherwise
  */
 const validatePlaceCommand = (command) => PLACE_COMMAND_REG_EX.test(command);
 
 /**
  * Parse the PLACE command to extract [x, y, f]
+ * @param {string} command - command to parse
+ * @returns [Array, null] - array of [x, y, f] when parsed, null otherwise
  */
 const parsePlaceCommand = (command) => {
   const result = PLACE_COMMAND_REG_EX.exec(command);
