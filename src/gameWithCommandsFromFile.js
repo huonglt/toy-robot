@@ -7,6 +7,8 @@ const { logErr } = require("./util.js");
 
 /**
  * Read commands from data.txt file in the repo
+ * @param {string} commandFile - path of the file containing the commands
+ * @returns [Array(string)] - array of string
  */
 const readCommandsFromFile = async (commandFile) => {
   const readStream = fs.createReadStream(commandFile);
