@@ -35,6 +35,7 @@ const playConsoleGame = () => {
       });
     };
 
+    log(`----Press Ctrl + C to exit----`);
     recursiveReadCommand();
   };
 
