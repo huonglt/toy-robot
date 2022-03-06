@@ -24,6 +24,26 @@ describe("test robot module", () => {
     expect(f).toEqual("");
   });
 
+  it("move that make robot falls will be prevented", () => {
+    const robot = createRobot();
+    let x, y, f;
+    // robot at the top NORTH EAST. MOVE commmand will make robot fall, so will be discarded
+    robot.executeCommand("PLACE 4,4,NORTH");
+    robot.executeCommand(MOVE);
+    ({ x, y, f } = robot.getCurrentPostion());
+    expect(x).toEqual(4);
+    expect(y).toEqual(4);
+    expect(f).toEqual(NORTH);
+
+    // robot at the origin, facing SOUTH. MOVE comand will make robot fall, so will be discarded
+    robot.executeCommand("PLACE 0,0,SOUTH");
+    robot.executeCommand(MOVE);
+    ({ x, y, f } = robot.getCurrentPostion());
+    expect(x).toEqual(0);
+    expect(y).toEqual(0);
+    expect(f).toEqual(SOUTH);
+  });
+
   it("commands in example 1", () => {
     const robot = createRobot();
     robot.executeCommand("PLACE 0,0,NORTH");
