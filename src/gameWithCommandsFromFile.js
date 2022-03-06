@@ -29,7 +29,7 @@ const readCommandsFromFile = async (commandFile) => {
 /**
  * Play game with commands from data.txt file in the repo
  */
-const playGameWithCommandsFromFile = () => {
+const playGameWithCommandsFromFile = async () => {
   const commandFile = path.resolve(__dirname, "../data/data.txt");
   try {
     const commands = await readCommandsFromFile(commandFile);
