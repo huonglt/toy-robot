@@ -24,3 +24,4 @@ npm v8.1.2 and above
 2. More commands for robot to take
 3. Add more obstacles
 4. Able to take file parameter from command line so user can choose to play the game with other files
+5. An interactive cli to prompt user to choose how to play game
