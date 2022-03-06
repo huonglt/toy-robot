@@ -4,33 +4,38 @@ const readline = require("readline");
 const { once } = require("events");
 const createRobot = require("./robot.js");
 
-const readCommandsFromFile = async () => {
-  const filename = path.resolve(__dirname, "../data/data.txt");
-  const readStream = fs.createReadStream(filename);
+/**
+ * Text file containing commands
+ */
+const commandFile = path.resolve(__dirname, "../data/data.txt");
+
+/**
+ * Read commands from data.txt file in the repo
+ */
+const readCommandsFromFile = async (commandFile) => {
+  const readStream = fs.createReadStream(commandFile);
   const arr = [];
   try {
     const rl = readline.createInterface({
       input: readStream,
-      crlfDelay: Infinity,
     });
 
-    rl.on("line", (line) => {
-      // Process the line.
-      arr.push(line);
-    });
+    rl.on("line", (line) => arr.push(line));
 
     await once(rl, "close");
-
-    console.log("File processed.");
   } catch (err) {
     console.error(err);
   } finally {
     return arr;
   }
 };
-const playGameWithDataFromFile = async () => {
+
+/**
+ * Play game with commands from data.txt file in the repo
+ */
+const playGameWithCommandsFromFile = async () => {
   try {
-    const commands = await readCommandsFromFile();
+    const commands = await readCommandsFromFile(commandFile);
     if (commands) {
       const robot = createRobot();
       commands.forEach((command) => {
@@ -43,4 +48,4 @@ const playGameWithDataFromFile = async () => {
   }
 };
 
-module.exports = playGameWithDataFromFile;
+module.exports = playGameWithCommandsFromFile;
