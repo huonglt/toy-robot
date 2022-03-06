@@ -10,11 +10,9 @@
     "type": "git",
     "url": "toy-robot"
   },
-  "author": "",
+  "author": "helen.le",
   "license": "ISC",
   "dependencies": {
-    "install": "^0.13.0",
-    "jest": "^27.5.1",
-    "npm": "^8.5.3"
+    "jest": "^27.5.1"
   }
 }
