@@ -1,6 +1,6 @@
 const readline = require("readline");
 const createRobot = require("./robot.js");
-const { validatePlaceCommand, validateCommand, log } = require("./util.js");
+const { log } = require("./util.js");
 
 const playGame = () => {
   const robot = createRobot();
@@ -23,13 +23,9 @@ const playGame = () => {
       process.exit(0);
     });
 
-    let firstPlaceCommandExecuted = false;
-
     /**
      * Recursively read user command until user press Ctrl + C to exit
-     * The first command to the robot to execute must be a valid PLACE command
-     * discard all commands until a valid PLACE command has been executed.
-     * Subsequent commands after 1st PLACE command will be executed if command is valid
+     * Pass command to robot to execute
      */
     const recursiveReadCommand = () => {
       rl.question("Command: ", (command) => {
@@ -42,7 +38,7 @@ const playGame = () => {
     recursiveReadCommand();
   };
 
-  // run the game
+  // prompt user to start the game
   promptUserForCommand();
 };
 
