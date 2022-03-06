@@ -6,26 +6,12 @@ const yargs = require("yargs/yargs");
 const { hideBin } = require("yargs/helpers");
 
 /**
- * To play game with commands input from consolem use play
- * To play game with commands preloaded from data.txt file, use play -o=file
+ * Play game with commands from file when -o=file
+ * Otherwise play game from standard input
  */
-yargs(hideBin(process.argv))
-  .command(
-    "play",
-    "Play Toy-Robot game",
-    () => {},
-    (argv) => {
-      if (argv.option === "file") {
-        playGameWithCommandsFromFile();
-      } else {
-        playConsoleGame();
-      }
-    }
-  )
-  .option("option", {
-    alias: "o",
-    type: "string",
-    description:
-      "o=file to play game with commands from file.\nOtherwise will play game via console",
-  })
-  .parse();
+const argv = yargs(hideBin(process.argv)).argv;
+if (argv.o === "file") {
+  playGameWithCommandsFromFile();
+} else {
+  playConsoleGame();
+}
