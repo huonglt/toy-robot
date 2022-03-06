@@ -112,9 +112,9 @@ const createRobot = () => {
    * Handle place command
    * PLACE will put the toy robot on the table in position X,Y and facing NORTH, SOUTH, EAST or WEST.
    * The origin (0,0) can be considered to be the SOUTH WEST most corner.
-   * @param {} x
-   * @param {*} y
-   * @param {*} f
+   * @param {Number} toX - position on X-axis to move robot to
+   * @param {Number} toY - position on Y-axis to move robot to
+   * @param {Number} toF - direction the robot facing to
    */
   const place = (toX, toY, toF) => {
     if (toX >= MIN_X && toX <= MAX_X) {
@@ -171,6 +171,7 @@ const createRobot = () => {
 
   /**
    * Get current position and facing direction of the robot
+   * @returns {Object{x: Number, y: Number, f: string}}
    */
   const getCurrentPostion = () => {
     return {
