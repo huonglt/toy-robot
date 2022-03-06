@@ -58,11 +58,11 @@ describe("test robot module", () => {
     const robot = createRobot();
     let x, y, f;
 
-    // robot at the top NORTH EAST. A MOVE commmand will make robot fall, so will be discarded
+    // robot at the top NORTH EAST.
     robot.executeCommand("PLACE 4,4,NORTH");
-    robot.executeCommand(MOVE);
 
-    // robot still at position 4 x 4, facing NORTH
+    // A MOVE commmand will make robot fall, so will be discarded
+    robot.executeCommand(MOVE);
     ({ x, y, f } = robot.getCurrentPostion());
     expect(x).toEqual(4);
     expect(y).toEqual(4);
