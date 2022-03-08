@@ -1,7 +1,7 @@
 ### Introduction
 
 A simulation of a toy robot moving on a square table top, of dimensions 5 units x 5 units.\
-The game can be played either via console or via pre-loaded commands in a textfile.\n
+The game can be played either via console or via pre-loaded commands in a textfile.\
 Add commands of your choice to data/data.txt if you want to play with different commands
 
 ### Requirements
