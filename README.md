@@ -16,7 +16,7 @@ npm v8.1.2 and above
 # How to run
 
 1. To run the game via console, type: npm run game
-2. To run the game where commands are in data/data.txt file, type: npm run game-from-file
+2. To run the game where commands are preloaded in data/data.txt file, type: npm run game-from-file
 
 # Further improvements
 
