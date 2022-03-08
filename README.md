@@ -1,11 +1,11 @@
 ### Introduction
 
-A simulation of a toy robot moving on a square table top, of dimensions 5 units x 5 units.
+A simulation of a toy robot moving on a square table top, of dimensions 5 units x 5 units.\
 The game can be played either via console or via a text file with pre-loaded commands.
 
 ### Requirements
 
-node v16.13.2 and above
+node v16.13.2 and above\
 npm v8.1.2 and above
 
 ### How to install
