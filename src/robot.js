@@ -186,6 +186,13 @@ const createRobot = () => {
   };
 
   /**
+   * Log out discarded command so user can understand what happened with the command
+   */
+  const discardCommand = (command) => {
+    log(`-->Invalid command, so discard: ${command}`);
+  };
+
+  /**
    * The first command the robot to execute must be a valid PLACE command
    * Discard all commands until a valid PLACE command has been executed.
    * Subsequent commands after 1st PLACE command will be executed if command is valid
@@ -197,6 +204,8 @@ const createRobot = () => {
         // 1st valid PLACE command, so execute it
         execute(command);
         firstPlaceCommandExecuted = true;
+      } else {
+        discardCommand(command);
       }
     } else {
       const validCommand = validateCommand(command);
@@ -204,6 +213,8 @@ const createRobot = () => {
       // execute subsequent valid commands after 1st PLACE command
       if (validCommand) {
         execute(command);
+      } else {
+        discardCommand(command);
       }
     }
   };
